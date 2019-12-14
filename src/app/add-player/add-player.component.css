@@ -1,0 +1,22 @@
+.input-field {
+    width: 100%;
+}
+
+.player-type-radio {
+   margin-top: 15px;
+   margin-bottom: 15px;
+}
+
+mat-radio-button {
+    margin-right: 10px;
+}
+
+.action-buttons {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.select-master {
+    margin-top: 15px;
+}

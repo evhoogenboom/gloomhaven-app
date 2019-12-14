@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Player } from './models/player';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'gloomhaven-app';
+constructor(private router: Router) {
+  this.router.navigateByUrl('/add-player');
+}
+
 }
