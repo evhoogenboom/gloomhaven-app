@@ -12,13 +12,15 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule, MatButton} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { PlayerListComponent } from './player-list/player-list.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddPlayerComponent
+    AddPlayerComponent,
+    PlayerListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Player } from '../models/player';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { PlayerService } from '../player.service';
 
 @Component({
   selector: 'app-add-player',
@@ -12,7 +14,7 @@ export class AddPlayerComponent implements OnInit {
   currentPlayerType: string = 'player';
   playersInGame: Player[] = [];
 
-  constructor() { }
+  constructor(private router: Router, private playerService: PlayerService) { }
 
   ngOnInit() {
     this.currentPlayer = this.createPlayer();
@@ -23,18 +25,26 @@ export class AddPlayerComponent implements OnInit {
     return {
       name: name,
       precedence: 0,
-      monster: false,
-      summon: false,
+      isMonster: false,
+      isSummon: false,
       master: null
     }
   }
 
   onSaveClick() {
+    switch (this.currentPlayerType) {
+      case 'monster': this.currentPlayer.isMonster = true;
+      break;
+      case 'summon': this.currentPlayer.isSummon = true;
+    }
     
+    this.playerService.savePlayer(this.currentPlayer);
+    this.router.navigateByUrl('/player-list');
+
   }
 
   onCancelClick() {
-    
+    this.router.navigateByUrl('/player-list');
   }
 
 }
