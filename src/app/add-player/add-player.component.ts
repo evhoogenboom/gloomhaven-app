@@ -18,7 +18,7 @@ export class AddPlayerComponent implements OnInit {
 
   ngOnInit() {
     this.currentPlayer = this.createPlayer();
-    this.playersInGame = [this.createPlayer('Estelle'), this.createPlayer('Thijs'), this.createPlayer('Macy')]
+    this.playersInGame = this.playerService.getPlayers();
   }
 
   createPlayer(name: string = ''): Player {
@@ -28,7 +28,10 @@ export class AddPlayerComponent implements OnInit {
       isMonster: false,
       isSummon: false,
       master: null
-    }
+    };
+  }
+  filterOutSummons() {
+    return this.playersInGame.filter(p => !p.isSummon);
   }
 
   onSaveClick() {
@@ -37,10 +40,8 @@ export class AddPlayerComponent implements OnInit {
       break;
       case 'summon': this.currentPlayer.isSummon = true;
     }
-    
     this.playerService.savePlayer(this.currentPlayer);
     this.router.navigateByUrl('/player-list');
-
   }
 
   onCancelClick() {

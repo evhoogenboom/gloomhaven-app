@@ -5,7 +5,7 @@ import { Player } from './models/player';
   providedIn: 'root'
 })
 export class PlayerService {
-  private playersInGame: Player[] = [];
+  private playersInGame: Player[] =  [this.createPlayer('Estelle'), this.createPlayer('Thijs'), this.createPlayer('Macy')]
 
   constructor() { }
 
@@ -17,6 +17,16 @@ export class PlayerService {
 
   getPlayers(): Player[] {
     return this.playersInGame;
+  }
+
+  createPlayer(name: string = ''): Player {
+    return {
+      name: name,
+      precedence: 0,
+      isMonster: false,
+      isSummon: false,
+      master: null
+    };
   }
 
 }

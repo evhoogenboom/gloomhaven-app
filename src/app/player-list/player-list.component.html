@@ -1,2 +1,18 @@
-<button mat-button (click)="onAddPlayerClick()" >Add player</button>
-<div *ngFor="let player of playersInGame">{{player.name}}</div>
+<mat-toolbar style="display: flex; align-items: center; justify-content: space-between;"><span>Players</span>
+  <button mat-button (click)="onAddPlayerClick()" ><mat-icon>add</mat-icon></button>
+</mat-toolbar>
+
+<div style="margin: 15px;">
+
+<div *ngFor="let player of playersInGame" class="player-row">
+  <p class="player-name">{{player.name}}</p>
+  <mat-divider></mat-divider>
+</div>
+
+  <div class="action-buttons">
+    <button mat-button (click)="onStartClick()">START ROUND</button>
+  </div>
+
+</div>
+
+

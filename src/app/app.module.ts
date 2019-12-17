@@ -13,6 +13,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule, MatButton} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { PlayerListComponent } from './player-list/player-list.component';
+import {MatDividerModule, MatIconModule} from '@angular/material';
 
 
 
@@ -32,7 +33,9 @@ import { PlayerListComponent } from './player-list/player-list.component';
     MatRadioModule,
     MatSelectModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDividerModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

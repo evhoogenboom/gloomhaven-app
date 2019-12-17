@@ -1,0 +1,13 @@
+.player-row {
+  height: 40px;
+}
+
+.player-name {
+  margin-left: 5px;
+}
+
+.action-buttons {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-around;
+}
