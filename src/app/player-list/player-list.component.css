@@ -2,12 +2,17 @@
   height: 40px;
 }
 
-.player-name {
-  margin-left: 5px;
-}
+
 
 .action-buttons {
   margin-top: 25px;
   display: flex;
   justify-content: space-around;
+}
+
+.player-info-actions {
+  margin-left: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

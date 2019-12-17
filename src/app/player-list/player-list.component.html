@@ -5,12 +5,19 @@
 <div style="margin: 15px;">
 
 <div *ngFor="let player of playersInGame" class="player-row">
-  <p class="player-name">{{player.name}}</p>
+  <div class="player-info-actions">
+    <p>
+      {{player.name}}
+      <span  *ngIf="player.isSummon"> (summon)</span>
+      <span *ngIf="player.isMonster"> (monster)</span>
+    </p>
+    <button mat-button (click)="onDeletePlayerClick(player)"><mat-icon>delete</mat-icon></button>
+  </div>
   <mat-divider></mat-divider>
 </div>
 
   <div class="action-buttons">
-    <button mat-button (click)="onStartClick()">START ROUND</button>
+    <button mat-button *ngIf="playersInGame.length > 0" (click)="onStartClick()">START ROUND</button>
   </div>
 
 </div>

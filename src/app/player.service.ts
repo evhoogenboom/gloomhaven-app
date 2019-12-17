@@ -15,6 +15,10 @@ export class PlayerService {
     console.log(this.playersInGame);
   }
 
+  deletePlayer(player: Player) {
+    this.playersInGame = this.playersInGame.filter(p => p != player);
+  }
+
   getPlayers(): Player[] {
     return this.playersInGame;
   }
@@ -22,10 +26,11 @@ export class PlayerService {
   createPlayer(name: string = ''): Player {
     return {
       name: name,
-      precedence: 0,
       isMonster: false,
       isSummon: false,
-      master: null
+      master: null,
+      powerOne: 9,
+      powerTen: 9
     };
   }
 

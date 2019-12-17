@@ -20,8 +20,14 @@ export class PlayerListComponent implements OnInit {
   loadPlayers(): void {
     this.playersInGame = this.playerService.getPlayers();
   }
+
   onAddPlayerClick() {
     this.router.navigateByUrl('/add-player');
+  }
+
+  onDeletePlayerClick(player: Player) {
+    this.playerService.deletePlayer(player);
+    this.loadPlayers();
   }
 
   onStartClick() {

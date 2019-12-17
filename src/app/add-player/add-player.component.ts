@@ -24,10 +24,11 @@ export class AddPlayerComponent implements OnInit {
   createPlayer(name: string = ''): Player {
     return {
       name: name,
-      precedence: 0,
       isMonster: false,
       isSummon: false,
-      master: null
+      master: null,
+      powerOne: 9,
+      powerTen: 9
     };
   }
   filterOutSummons() {

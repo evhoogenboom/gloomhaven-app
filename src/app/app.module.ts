@@ -13,7 +13,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule, MatButton} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { PlayerListComponent } from './player-list/player-list.component';
-import {MatDividerModule, MatIconModule} from '@angular/material';
+import {MatDividerModule, MatIconModule, MatTabsModule} from '@angular/material';
+import { EnterInitiativeComponent } from './enter-initiative/enter-initiative.component';
 
 
 
@@ -21,7 +22,8 @@ import {MatDividerModule, MatIconModule} from '@angular/material';
   declarations: [
     AppComponent,
     AddPlayerComponent,
-    PlayerListComponent
+    PlayerListComponent,
+    EnterInitiativeComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import {MatDividerModule, MatIconModule} from '@angular/material';
     MatButtonModule,
     MatToolbarModule,
     MatDividerModule,
-    MatIconModule
+    MatIconModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
