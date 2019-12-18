@@ -29,8 +29,8 @@ export class PlayerService {
       isMonster: false,
       isSummon: false,
       master: null,
-      powerOne: 9,
-      powerTen: 9
+      tenPowerZero: 9,
+      tenPowerOne: 9
     };
   }
 

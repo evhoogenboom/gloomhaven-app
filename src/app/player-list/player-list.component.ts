@@ -31,7 +31,7 @@ export class PlayerListComponent implements OnInit {
   }
 
   onStartClick() {
-
-}
+    this.router.navigateByUrl('/enter-initiative');
+  }
 
 }

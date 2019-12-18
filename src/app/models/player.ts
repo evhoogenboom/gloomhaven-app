@@ -3,6 +3,6 @@ export interface Player {
   isMonster: boolean;
   isSummon: boolean;
   master: string;
-  powerOne: number;
-  powerTen: number;
+  tenPowerZero: number;
+  tenPowerOne: number;
 }

@@ -9,6 +9,8 @@ import {Player} from '../models/player';
 })
 export class EnterInitiativeComponent implements OnInit {
   playersInGame: Player[] = [];
+  digits: number[] = [0,1,2,3,4,5,6,7,8,9];
+  selectedPlayer: Player;
 
 
   constructor(private playerService: PlayerService) { }
@@ -23,6 +25,14 @@ export class EnterInitiativeComponent implements OnInit {
 
   filterOutSummons() {
     return this.playersInGame.filter(p => !p.isSummon);
+  }
+
+  setTenPowerZero(player: Player, value: number): void {
+    player.tenPowerZero = value;
+  }
+
+  setTenPowerOne(player: Player, value: number): void {
+    player.tenPowerOne = value;
   }
 
 }
