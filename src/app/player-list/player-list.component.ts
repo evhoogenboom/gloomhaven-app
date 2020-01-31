@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Player } from '../models/player';
-import { PlayerService } from '../player.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {Player} from '../models/player';
+import {PlayerService} from '../player.service';
 
 @Component({
   selector: 'app-player-list',
@@ -11,7 +11,8 @@ import { PlayerService } from '../player.service';
 export class PlayerListComponent implements OnInit {
   playersInGame: Player[] = [];
 
-  constructor(private router: Router, private playerService: PlayerService) { }
+  constructor(private router: Router, private playerService: PlayerService) {
+  }
 
   ngOnInit() {
     this.loadPlayers();

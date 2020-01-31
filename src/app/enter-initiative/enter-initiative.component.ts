@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PlayerService} from '../player.service';
 import {Player} from '../models/player';
+import {PlayerType} from '../enums/PlayerType';
+import {InitiativeService} from './initiative.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-enter-initiative',
@@ -9,13 +12,19 @@ import {Player} from '../models/player';
 })
 export class EnterInitiativeComponent implements OnInit {
   playersInGame: Player[] = [];
-  digits: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   selectedPlayer: Player;
+  private isEditing: boolean;
 
 
-  constructor(private playerService: PlayerService) { }
+  constructor(
+    private playerService: PlayerService,
+    private  initiativeService: InitiativeService,
+    private router: Router
+  ) {
+  }
 
   ngOnInit() {
+    this.isEditing = true;
     this.loadPlayers();
     this.selectedPlayer = this.playersInGame[0];
   }
@@ -25,15 +34,21 @@ export class EnterInitiativeComponent implements OnInit {
   }
 
   filterOutSummons() {
-    return this.playersInGame.filter(p => !p.isSummon);
+    return this.playersInGame.filter(p => !(p.playerType === PlayerType.SUMMON));
   }
 
-  setTenPowerZero(player: Player, value: number): void {
-    player.tenPowerZero = value =! 0 ? value : 0;
+  onSubmit() {
+    this.isEditing = false;
+    this.playersInGame = this.initiativeService.sortByInitiative(this.playersInGame);
   }
 
-  setTenPowerOne(player: Player, value: number): void {
-    player.tenPowerOne = value =! 0 ? value : 0;
+  onNextRoundClick() {
+    this.isEditing = true;
+    // this.playersInGame.forEach(p => p.initiative = 99);
+  }
+
+  onBack() {
+    this.router.navigateByUrl('/player-list');
   }
 
 }

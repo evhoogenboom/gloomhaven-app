@@ -1,29 +1,22 @@
 <div style="margin: 15px; display: flex; flex-direction: row;">
 
-<div style="width: 60%;">
-<div *ngFor="let player of filterOutSummons()e" class="player-row" (click)="selectedPlayer = player">
-  <div class="player-info-actions">
-    <p style="color: red;">
-      {{player.name}}
-    </p>
-    <P>
-      {{player.tenPowerOne}}{{player.tenPowerZero}}
-    </P>
+  <div style="width: 60%;">
+    <div *ngFor="let player of filterOutSummons()e" class="player-row" (click)="selectedPlayer = player">
+      <div class="player-info-actions">
+        <p style="color: red;">
+          {{player.name}}
+        </p>
+        <P>
+          {{player.initiative}}
+        </P>
+      </div>
+      <mat-divider></mat-divider>
+    </div>
   </div>
-  <mat-divider></mat-divider>
-</div>
+  <div class="action-buttons">
+    <button mat-button (click)="onBack()">CANCEL</button>
+    <button *ngIf="isEditing" mat-button (click)="onSubmit()">SUBMIT</button>
+    <button *ngIf="!isEditing" mat-button (click)="onNextRoundClick()">NEXT ROUND</button>
   </div>
-
-  <div>
-<div *ngFor="let digit of  digits">
-  <button (click)="setTenPowerZero(selectedPlayer)" >{{digit}}</button>
-</div>
-</div>
-<div>
-  <div *ngFor="let digit of  digits">
-    <button >{{digit}}</button>
-  </div>
-  </div>
-
 
 </div>
