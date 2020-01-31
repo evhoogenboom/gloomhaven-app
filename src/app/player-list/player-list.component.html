@@ -8,8 +8,8 @@
   <div class="player-info-actions">
     <p>
       {{player.name}}
-      <span  *ngIf="player.isSummon"> (summon)</span>
-      <span *ngIf="player.isMonster"> (monster)</span>
+      <span  *ngIf="player.playerType === 'SUMMON'"> (summon)</span>
+      <span *ngIf="player.playerType === 'MONSTER'"> (monster)</span>
     </p>
     <button mat-button (click)="onDeletePlayerClick(player)"><mat-icon>delete</mat-icon></button>
   </div>

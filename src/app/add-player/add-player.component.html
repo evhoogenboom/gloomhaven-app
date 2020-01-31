@@ -8,15 +8,15 @@
   </mat-form-field>
 </div>
 <div class="player-type-radio">
-    <mat-radio-group [(ngModel)]="currentPlayerType">
-      <mat-radio-button value="player">Player</mat-radio-button>
-      <mat-radio-button value="monster">Monster</mat-radio-button>
-      <mat-radio-button *ngIf="playersInGame.length > 0" value="summon">Summon</mat-radio-button>
+    <mat-radio-group [(ngModel)]="currentPlayer.playerType">
+      <mat-radio-button value="PLAYER">Player</mat-radio-button>
+      <mat-radio-button value="MONSTER">Monster</mat-radio-button>
+      <mat-radio-button *ngIf="playersInGame.length > 0" value="SUMMON">Summon</mat-radio-button>
     </mat-radio-group>
 </div>
-<div *ngIf="currentPlayerType == 'summon'" class="select-master">
+<div *ngIf="currentPlayer.playerType === 'SUMMON'" class="select-master">
     <mat-form-field class="input-field">
-      <mat-select [(ngModel)]="currentPlayer.master">
+      <mat-select [(ngModel)]="currentPlayer.masterName">
           <mat-option *ngFor="let player of filterOutSummons()" value="player.name">{{player.name}}</mat-option>
       </mat-select>
       <mat-label>Summon belongs to</mat-label>
@@ -24,7 +24,7 @@
 </div>
 
 <div class="action-buttons">
+  <button mat-button (click)="onCancelClick()">CANCEL</button>
   <button mat-button (click)="onSaveClick()">SAVE</button>
-    <button mat-button (click)="onCancelClick()">CANCEL</button>
   </div>
 </div>

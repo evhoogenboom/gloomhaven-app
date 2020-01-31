@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Player } from '../models/player';
-import { FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { PlayerService } from '../player.service';
+import {Component, OnInit} from '@angular/core';
+import {Player} from '../models/player';
+import {Router} from '@angular/router';
+import {PlayerService} from '../player.service';
+import {PlayerType} from '../enums/PlayerType';
 
 @Component({
   selector: 'app-add-player',
@@ -11,36 +11,24 @@ import { PlayerService } from '../player.service';
 })
 export class AddPlayerComponent implements OnInit {
   currentPlayer: Player;
-  currentPlayerType: string = 'player';
   playersInGame: Player[] = [];
 
-  constructor(private router: Router, private playerService: PlayerService) { }
+  constructor(
+    private router: Router, private playerService: PlayerService) {
+  }
 
   ngOnInit() {
-    this.currentPlayer = this.createPlayer();
+    this.currentPlayer = this.playerService.createPlayer();
     this.playersInGame = this.playerService.getPlayers();
+    console.log(this.currentPlayer);
   }
 
-  createPlayer(name: string = ''): Player {
-    return {
-      name: name,
-      isMonster: false,
-      isSummon: false,
-      master: null,
-      tenPowerZero: 9,
-      tenPowerOne: 9
-    };
-  }
   filterOutSummons() {
-    return this.playersInGame.filter(p => !p.isSummon);
+    return this.playersInGame.filter(p => !(p.playerType === PlayerType.SUMMON));
   }
 
   onSaveClick() {
-    switch (this.currentPlayerType) {
-      case 'monster': this.currentPlayer.isMonster = true;
-      break;
-      case 'summon': this.currentPlayer.isSummon = true;
-    }
+    console.log(this.currentPlayer);
     this.playerService.savePlayer(this.currentPlayer);
     this.router.navigateByUrl('/player-list');
   }

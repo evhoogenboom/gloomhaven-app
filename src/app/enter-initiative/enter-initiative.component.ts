@@ -9,7 +9,7 @@ import {Player} from '../models/player';
 })
 export class EnterInitiativeComponent implements OnInit {
   playersInGame: Player[] = [];
-  digits: number[] = [0,1,2,3,4,5,6,7,8,9];
+  digits: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   selectedPlayer: Player;
 
 
@@ -17,6 +17,7 @@ export class EnterInitiativeComponent implements OnInit {
 
   ngOnInit() {
     this.loadPlayers();
+    this.selectedPlayer = this.playersInGame[0];
   }
 
   loadPlayers(): void {
@@ -28,11 +29,11 @@ export class EnterInitiativeComponent implements OnInit {
   }
 
   setTenPowerZero(player: Player, value: number): void {
-    player.tenPowerZero = value;
+    player.tenPowerZero = value =! 0 ? value : 0;
   }
 
   setTenPowerOne(player: Player, value: number): void {
-    player.tenPowerOne = value;
+    player.tenPowerOne = value =! 0 ? value : 0;
   }
 
 }

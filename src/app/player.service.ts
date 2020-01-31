@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Player } from './models/player';
+import {PlayerType} from './enums/PlayerType';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class PlayerService {
   }
 
   deletePlayer(player: Player) {
-    this.playersInGame = this.playersInGame.filter(p => p != player);
+    this.playersInGame = this.playersInGame.filter(p => p !== player && p.masterName !== player.name); // not working
   }
 
   getPlayers(): Player[] {
@@ -26,11 +27,9 @@ export class PlayerService {
   createPlayer(name: string = ''): Player {
     return {
       name: name,
-      isMonster: false,
-      isSummon: false,
-      master: null,
-      tenPowerZero: 9,
-      tenPowerOne: 9
+      playerType: PlayerType.PLAYER,
+      masterName: null,
+      initiative: 90
     };
   }
 
