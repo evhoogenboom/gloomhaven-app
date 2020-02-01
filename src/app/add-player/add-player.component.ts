@@ -20,7 +20,6 @@ export class AddPlayerComponent implements OnInit {
   ngOnInit() {
     this.currentPlayer = this.playerService.createPlayer();
     this.playersInGame = this.playerService.getPlayers();
-    console.log(this.currentPlayer);
   }
 
   filterOutSummons() {
@@ -28,7 +27,6 @@ export class AddPlayerComponent implements OnInit {
   }
 
   onSaveClick() {
-    console.log(this.currentPlayer);
     this.playerService.savePlayer(this.currentPlayer);
     this.router.navigateByUrl('/player-list');
   }

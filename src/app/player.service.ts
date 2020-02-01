@@ -19,12 +19,10 @@ export class PlayerService {
 
   savePlayer(player: Player): void {
     this.playersInGame.push(player);
-    console.log('service');
-    console.log(this.playersInGame);
   }
 
   deletePlayer(player: Player) {
-    this.playersInGame = this.playersInGame.filter(p => p !== player && p.masterName !== player.name); // not working
+    this.playersInGame = this.playersInGame.filter(p => p !== player && p.masterName !== player.name);
   }
 
   getPlayers(): Player[] {

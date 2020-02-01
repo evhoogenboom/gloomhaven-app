@@ -18,7 +18,7 @@
   <div *ngIf="currentPlayer.playerType === 'SUMMON'" class="select-master">
     <mat-form-field class="input-field">
       <mat-select [(ngModel)]="currentPlayer.masterName">
-        <mat-option *ngFor="let player of filterOutSummons()" value="player.name" >{{player.name}}</mat-option>
+        <mat-option *ngFor="let player of filterOutSummons()" value="{{player.name}}" >{{player.name}}</mat-option>
       </mat-select>
       <mat-label>Summon belongs to</mat-label>
     </mat-form-field>
