@@ -8,10 +8,10 @@ import {PlayerType} from './enums/PlayerType';
 export class PlayerService {
   private playersInGame: Player[] =
     [
-      this.createPlayer('Nitari', 32),
-      this.createPlayer('Ratava', 29),
-      this.createPlayer('Leeroy', 85),
-      this.createPlayer('Estelle', 29)
+      this.createPlayer('Nitari'),
+      this.createPlayer('Ratava'),
+      this.createPlayer('Leeroy'),
+      this.createPlayer('Estelle')
     ];
 
   constructor() {

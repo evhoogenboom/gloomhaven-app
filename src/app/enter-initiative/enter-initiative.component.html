@@ -1,4 +1,4 @@
-<mat-toolbar style="display: flex; align-items: center; justify-content: space-between;"><span>Initiative</span>
+<mat-toolbar style="display: flex; align-items: center; justify-content: space-between; background-color: purple; color: white"><span>Initiative</span>
 </mat-toolbar>
 
 <div style="margin: 15px; display: flex; flex-direction: column;">
@@ -20,9 +20,9 @@
     </div>
   </div>
   <div class="action-buttons">
-    <button mat-button (click)="onBack()">BACK</button>
-    <button *ngIf="isEditing" mat-button [disabled]="!allowSubmit()" (click)="onSubmit()">SUBMIT</button>
-    <button *ngIf="!isEditing" mat-button (click)="onNextRoundClick()">NEXT ROUND</button>
+    <button mat-button style="color: cadetblue" (click)="onBack()">BACK</button>
+    <button *ngIf="isEditing" mat-button [disabled]="!allowSubmit()" style="color: purple" (click)="onSubmit()">SUBMIT</button>
+    <button *ngIf="!isEditing" mat-button style="color: purple" (click)="onNextRoundClick()">NEXT ROUND</button>
   </div>
 
 </div>
