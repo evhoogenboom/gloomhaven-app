@@ -12,7 +12,6 @@ import {Router} from '@angular/router';
 })
 export class EnterInitiativeComponent implements OnInit {
   playersInGame: Player[] = [];
-  selectedPlayer: Player;
   isEditing: boolean;
 
 
@@ -26,15 +25,26 @@ export class EnterInitiativeComponent implements OnInit {
   ngOnInit() {
     this.isEditing = true;
     this.loadPlayers();
-    this.selectedPlayer = this.playersInGame[0];
   }
 
   loadPlayers(): void {
     this.playersInGame = this.playerService.getPlayers();
   }
 
+  displayPlayers(): Player[] {
+    return (this.isEditing) ? this.filterOutSummons() : this.playersInGame;
+  }
+
   filterOutSummons() {
-    return this.playersInGame.filter(p => !(p.playerType === PlayerType.SUMMON));
+    return this.playersInGame.filter(p => !(p.playerType.toString() === 'SUMMON'));
+  }
+
+  roundInitiative(initiative: number) {
+    return Math.ceil(initiative);
+  }
+
+  allowSubmit(): boolean {
+    return this.playersInGame.filter(p => p.initiative === 0).length === 0;
   }
 
   onSubmit() {
@@ -44,7 +54,7 @@ export class EnterInitiativeComponent implements OnInit {
 
   onNextRoundClick() {
     this.isEditing = true;
-    // this.playersInGame.forEach(p => p.initiative = 99);
+    this.playersInGame.forEach(p => p.initiative = 0);
   }
 
   onBack() {

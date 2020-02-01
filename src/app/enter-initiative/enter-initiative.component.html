@@ -4,13 +4,13 @@
 <div style="margin: 15px; display: flex; flex-direction: column;">
 
   <div style="width: 90%;">
-    <div *ngFor="let player of filterOutSummons()e" class="player-row" (click)="selectedPlayer = player">
+    <div *ngFor="let player of displayPlayers()" class="player-row">
       <div class="player-info-actions">
         <p>
           {{player.name}}
         </p>
         <P *ngIf="!isEditing">
-          {{player.initiative}}
+          {{roundInitiative(player.initiative)}}
         </P>
           <mat-form-field *ngIf="isEditing" class="input-field">
             <input matInput type="number" [(ngModel)]="player.initiative">
@@ -20,8 +20,8 @@
     </div>
   </div>
   <div class="action-buttons">
-    <button mat-button (click)="onBack()">CANCEL</button>
-    <button *ngIf="isEditing" mat-button (click)="onSubmit()">SUBMIT</button>
+    <button mat-button (click)="onBack()">BACK</button>
+    <button *ngIf="isEditing" mat-button [disabled]="!allowSubmit()" (click)="onSubmit()">SUBMIT</button>
     <button *ngIf="!isEditing" mat-button (click)="onNextRoundClick()">NEXT ROUND</button>
   </div>
 
