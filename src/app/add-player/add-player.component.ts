@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Player } from '../models/player';
-import { FormControl, Validators } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {Player} from '../models/player';
+import {Router} from '@angular/router';
+import {PlayerService} from '../player.service';
+import {PlayerType} from '../enums/PlayerType';
 
 @Component({
   selector: 'app-add-player',
@@ -9,32 +11,28 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class AddPlayerComponent implements OnInit {
   currentPlayer: Player;
-  currentPlayerType: string = 'player';
   playersInGame: Player[] = [];
 
-  constructor() { }
-
-  ngOnInit() {
-    this.currentPlayer = this.createPlayer();
-    this.playersInGame = [this.createPlayer('Estelle'), this.createPlayer('Thijs'), this.createPlayer('Macy')]
+  constructor(
+    private router: Router, private playerService: PlayerService) {
   }
 
-  createPlayer(name: string = ''): Player {
-    return {
-      name: name,
-      precedence: 0,
-      monster: false,
-      summon: false,
-      master: null
-    }
+  ngOnInit() {
+    this.currentPlayer = this.playerService.createPlayer();
+    this.playersInGame = this.playerService.getPlayers();
+  }
+
+  filterOutSummons() {
+    return this.playersInGame.filter(p => !(p.playerType === PlayerType.SUMMON));
   }
 
   onSaveClick() {
-    
+    this.playerService.savePlayer(this.currentPlayer);
+    this.router.navigateByUrl('/player-list');
   }
 
   onCancelClick() {
-    
+    this.router.navigateByUrl('/player-list');
   }
 
 }

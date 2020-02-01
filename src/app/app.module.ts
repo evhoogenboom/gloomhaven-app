@@ -12,13 +12,18 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule, MatButton} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { PlayerListComponent } from './player-list/player-list.component';
+import {MatDividerModule, MatIconModule, MatTabsModule} from '@angular/material';
+import { EnterInitiativeComponent } from './enter-initiative/enter-initiative.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddPlayerComponent
+    AddPlayerComponent,
+    PlayerListComponent,
+    EnterInitiativeComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatRadioModule,
     MatSelectModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDividerModule,
+    MatIconModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

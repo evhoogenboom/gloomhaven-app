@@ -1,30 +1,31 @@
-<mat-toolbar style="display: flex; align-items: center; justify-content: center;"><span>Add player</span></mat-toolbar>
+<mat-toolbar style="display: flex; align-items: center; justify-content: space-between; background-color: purple; color: white"><span>Add player</span>
+</mat-toolbar>
 
 <div style="margin: 15px;">
 
-<div >
-  <mat-form-field class="input-field">
-      <input matInput type="text" placeholder="Name" [(ngModel)]="currentPlayer.name">
-  </mat-form-field>
-</div>
-<div class="player-type-radio">
-    <mat-radio-group [(ngModel)]="currentPlayerType">
-      <mat-radio-button value="player">Player</mat-radio-button>
-      <mat-radio-button value="monster">Monster</mat-radio-button>
-      <mat-radio-button *ngIf="playersInGame.length > 0" value="summon">Summon</mat-radio-button>
-    </mat-radio-group>
-</div>
-<div *ngIf="currentPlayerType == 'summon'" class="select-master">
+  <div>
     <mat-form-field class="input-field">
-      <mat-select [(ngModel)]="currentPlayer.summon">
-          <mat-option *ngFor="let player of playersInGame" value="player">{{player.name}}</mat-option>
+      <input matInput type="text" placeholder="Name" [(ngModel)]="currentPlayer.name">
+    </mat-form-field>
+  </div>
+  <div class="player-type-radio">
+    <mat-radio-group [(ngModel)]="currentPlayer.playerType">
+      <mat-radio-button value="PLAYER">Player</mat-radio-button>
+      <mat-radio-button value="MONSTER">Monster</mat-radio-button>
+      <mat-radio-button *ngIf="playersInGame.length > 0" value="SUMMON">Summon</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div *ngIf="currentPlayer.playerType.toString() === 'SUMMON'" class="select-master">
+    <mat-form-field class="input-field">
+      <mat-select [(ngModel)]="currentPlayer.masterName">
+        <mat-option *ngFor="let player of filterOutSummons()" value="{{player.name}}" >{{player.name}}</mat-option>
       </mat-select>
       <mat-label>Summon belongs to</mat-label>
     </mat-form-field>
-</div>
+  </div>
 
-<div class="action-buttons">
-  <button mat-button (click)="onSaveClick()">Save player</button>
-    <button mat-button (click)="onCancelClick()">Cancel</button>
+  <div class="action-buttons">
+    <button mat-button style="color: cadetblue" (click)="onCancelClick()">CANCEL</button>
+    <button mat-button style="color: purple" (click)="onSaveClick()">SAVE</button>
   </div>
 </div>

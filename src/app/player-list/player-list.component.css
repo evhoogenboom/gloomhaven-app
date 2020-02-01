@@ -1,0 +1,18 @@
+.player-row {
+  height: 40px;
+}
+
+
+
+.action-buttons {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.player-info-actions {
+  margin-left: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

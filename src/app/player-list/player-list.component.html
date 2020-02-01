@@ -1,0 +1,25 @@
+<mat-toolbar style="display: flex; align-items: center; justify-content: space-between; background-color: purple; color: white"  ><span>Players</span>
+  <button mat-button (click)="onAddPlayerClick()" ><mat-icon>add</mat-icon></button>
+</mat-toolbar>
+
+<div style="margin: 15px;">
+
+<div *ngFor="let player of playersInGame" class="player-row">
+  <div class="player-info-actions">
+    <p>
+      {{player.name}}
+      <span style="color: purple" *ngIf="player.playerType === 'SUMMON'"> (summon)</span>
+      <span style="color: purple" *ngIf="player.playerType === 'MONSTER'"> (monster)</span>
+    </p>
+    <button mat-button (click)="onDeletePlayerClick(player)"><mat-icon style="color: cadetblue">delete</mat-icon></button>
+  </div>
+  <mat-divider></mat-divider>
+</div>
+
+  <div class="action-buttons">
+    <button mat-button style="color: purple" *ngIf="playersInGame.length > 0" (click)="onStartClick()">ENTER INITIATIVES</button>
+  </div>
+
+</div>
+
+
