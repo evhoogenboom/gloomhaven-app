@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Player } from './models/player';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 constructor(private router: Router) {
-  this.router.navigateByUrl('/enter-initiative');
+  this.router.navigateByUrl('/player-list');
 }
 
 }

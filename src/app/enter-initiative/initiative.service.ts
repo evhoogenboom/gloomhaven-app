@@ -12,10 +12,7 @@ export class InitiativeService {
   sortByInitiative(players: Player[]): Player[] {
     console.log(players);
     const summons: Player[] = players.filter(p => p.playerType.toString() === 'SUMMON');
-    console.log(summons);
-    console.log(players);
     for (const summon of summons) {
-      console.log(summon);
       summon.initiative = this.getInitiativeByName(players, summon.masterName);
     }
     return players.sort((a,b) => a.initiative - b.initiative);
