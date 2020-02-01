@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 export class EnterInitiativeComponent implements OnInit {
   playersInGame: Player[] = [];
   selectedPlayer: Player;
-  private isEditing: boolean;
+  isEditing: boolean;
 
 
   constructor(

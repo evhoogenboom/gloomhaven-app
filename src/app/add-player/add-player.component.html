@@ -15,7 +15,7 @@
       <mat-radio-button *ngIf="playersInGame.length > 0" value="SUMMON">Summon</mat-radio-button>
     </mat-radio-group>
   </div>
-  <div *ngIf="currentPlayer.playerType === 'SUMMON'" class="select-master">
+  <div *ngIf="currentPlayer.playerType == 'SUMMON'" class="select-master">
     <mat-form-field class="input-field">
       <mat-select [(ngModel)]="currentPlayer.masterName">
         <mat-option *ngFor="let player of filterOutSummons()" value="{{player.name}}" >{{player.name}}</mat-option>
