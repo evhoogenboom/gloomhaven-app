@@ -1,16 +1,22 @@
-<div style="margin: 15px; display: flex; flex-direction: row;">
+<mat-toolbar style="display: flex; align-items: center; justify-content: space-between;"><span>Initiative</span>
+</mat-toolbar>
 
-  <div style="width: 60%;">
+<div style="margin: 15px; display: flex; flex-direction: column;">
+
+  <div style="width: 90%;">
     <div *ngFor="let player of filterOutSummons()e" class="player-row" (click)="selectedPlayer = player">
       <div class="player-info-actions">
-        <p style="color: red;">
+        <p>
           {{player.name}}
         </p>
-        <P>
+        <P *ngIf="!isEditing">
           {{player.initiative}}
         </P>
+          <mat-form-field *ngIf="isEditing" class="input-field">
+            <input matInput type="number" [(ngModel)]="player.initiative">
+          </mat-form-field>
       </div>
-      <mat-divider></mat-divider>
+      <mat-divider *ngIf="!isEditing"></mat-divider>
     </div>
   </div>
   <div class="action-buttons">
